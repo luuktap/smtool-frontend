@@ -1,0 +1,33 @@
+.login-wrapper {
+  height: calc(100% - 64px);
+  display: flex;
+
+  .login-card {
+    width: 25%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+    // mat-card-header {
+    //   mat-card-title {
+
+    //   }
+    // }
+    mat-card-content {
+      form.example-form {
+        width: 100%;
+
+        .example-full-width {
+          width: 100%;
+        }
+      }
+
+
+    }
+  }
+}
+
+::ng-deep .mat-card-header-text {
+  margin: auto !important;
+}

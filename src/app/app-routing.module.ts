@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsermanagementComponent } from './usermanagement/usermanagement.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [{
   path: 'dashboard',
@@ -12,11 +13,20 @@ const routes: Routes = [{
   path: 'user-management',
   component: UsermanagementComponent
 },
-{ path: '',
+{
+  path: 'login',
+  component: LoginComponent
+},
+
+{
+  path: '',
   redirectTo: '/dashboard',
   pathMatch: 'full'
 },
-{ path: '**',   redirectTo: '/dashboard' }];
+{
+  path: '**',
+  redirectTo: '/dashboard'
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
