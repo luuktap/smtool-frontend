@@ -5,17 +5,19 @@ import { UsermanagementDataSource } from './usermanagement-datasource';
 @Component({
   selector: 'app-usermanagement',
   templateUrl: './usermanagement.component.html',
-  styleUrls: ['./usermanagement.component.css']
+  styleUrls: ['./usermanagement.component.scss']
 })
 export class UsermanagementComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource: UsermanagementDataSource;
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['id', 'name', 'actions'];
+
+  filterText = '';
 
   ngOnInit() {
     this.dataSource = new UsermanagementDataSource(this.paginator, this.sort);
   }
+  
 }
