@@ -48,17 +48,14 @@ export class UsermanagementComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
-    setInterval(() => {
-      this.testData.push({
-        id: (this.testData.length+1),
-        name: 'test'
-      });
-      this.dataSource.data = this.testData;
-    }, 1500)
   }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  addDataToTable(data: testData) {
+    this.testData.push(data);
+    this.dataSource.data = this.testData;
   }
 }
