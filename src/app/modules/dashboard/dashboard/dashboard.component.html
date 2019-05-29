@@ -1,6 +1,6 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
+  <mat-grid-list [cols]="(isHandset | async) ? 1 : 2" rowHeight="350px">
     <mat-grid-tile [colspan]="1" [rowspan]="2">
       <mat-card class="dashboard-card">
         <mat-card-header>
@@ -14,27 +14,80 @@
               <h4 mat-line>{{server.name}}</h4>
               <p mat-line *ngIf="server.online">{{server.playersOnline}} / {{server.playersLimit}} Players</p>
               <p mat-line *ngIf="server.online">Uptime: 1hr</p>
-              <button
-              *ngIf="!server.online"
-              mat-icon-button
-              matTooltip="Start Server">
+
+              <ng-container *ngIf="!(isHandset | async) else phoneControls">
+                <button *ngIf="!server.online" mat-icon-button matTooltip="Start Server">
+                  <mat-icon>play_arrow</mat-icon>
+                </button>
+                <button *ngIf="server.online" mat-icon-button matTooltip="Stop Server">
+                  <mat-icon>stop</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Restart Server">
+                  <mat-icon>autorenew</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Update Server" style="margin-right: 10px;">
+                  <mat-icon>get_app</mat-icon>
+                </button>
+              </ng-container>
+
+              <ng-template #phoneControls>
+                <button mat-icon-button [matMenuTriggerFor]="phoneControlsMenu" aria-label="Toggle menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #phoneControlsMenu="matMenu" xPosition="before">
+                  <button *ngIf="!server.online" mat-menu-item>
+                    <mat-icon>play_arrow</mat-icon>
+                    <span>Start Server</span>
+                  </button>
+                  <button *ngIf="server.online" mat-menu-item>
+                    <mat-icon>stop</mat-icon>
+                    <span>Stop Server</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>autorenew</mat-icon>
+                    <span>Restart Server</span>
+                  </button>
+                  <button mat-menu-item style="margin-right: 10px;">
+                    <mat-icon>get_app</mat-icon>
+                    <span>Update Server</span>
+                  </button>
+                </mat-menu>
+              </ng-template>
+
+              <mat-chip-list>
+                <mat-chip *ngIf="server.online" class="server-online">Online</mat-chip>
+                <mat-chip *ngIf="!server.online" class="server-offline">Offline</mat-chip>
+              </mat-chip-list>
+              <mat-divider></mat-divider>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Service Statuses
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <mat-list>
+            <mat-list-item *ngFor="let server of GameServers">
+              <h4 mat-line>{{server.name}}</h4>
+              <p mat-line *ngIf="server.online">{{server.playersOnline}} / {{server.playersLimit}} Players</p>
+              <p mat-line *ngIf="server.online">Uptime: 1hr</p>
+              <button *ngIf="!server.online" mat-icon-button matTooltip="Start Server">
                 <mat-icon>play_arrow</mat-icon>
               </button>
-              <button
-              *ngIf="server.online"
-              mat-icon-button
-              matTooltip="Stop Server">
+              <button *ngIf="server.online" mat-icon-button matTooltip="Stop Server">
                 <mat-icon>stop</mat-icon>
               </button>
-              <button
-              mat-icon-button
-              matTooltip="Restart Server">
+              <button mat-icon-button matTooltip="Restart Server">
                 <mat-icon>autorenew</mat-icon>
               </button>
-              <button
-              mat-icon-button
-              matTooltip="Update Server"
-              style="margin-right: 10px;">
+              <button mat-icon-button matTooltip="Update Server" style="margin-right: 10px;">
                 <mat-icon>get_app</mat-icon>
               </button>
               <mat-chip-list>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { map } from 'rxjs/operators';
 
 import { Gameserver } from '../../../interfaces/gameserver';
 
@@ -44,9 +46,18 @@ export class DashboardComponent implements OnInit {
     }
   ];
 
-
-  constructor() {
+  constructor(
+    private breakpointObserver: BreakpointObserver
+  ) {
   }
+
+  isHandset = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+    map(({ matches }) => {
+      if (matches) {
+        return true;
+      }
+    })
+  )
   
   ngOnInit() {
   }
