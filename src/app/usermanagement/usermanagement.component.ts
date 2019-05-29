@@ -12,8 +12,8 @@ export interface testData {
   styleUrls: ['./usermanagement.component.scss']
 })
 export class UsermanagementComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   displayedColumns: string[] = ['id', 'name', 'actions'];
   testData: testData[] = [

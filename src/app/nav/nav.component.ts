@@ -5,25 +5,31 @@ import { map } from 'rxjs/operators';
 import { MatMenu, MatSidenav } from '@angular/material';
 
 import { User } from '../interfaces/user';
+import { Navroute } from '../interfaces/navroute';
 import { AuthService } from '../services/auth.service';
-
-interface ROUTE {
-  icon?: string;
-  route?: string;
-  title?: string;
-}
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
+
 export class NavComponent {
 
-  routes: ROUTE[] = [{
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private AuthService: AuthService
+  ) {}
+
+  routes: Navroute[] = [{
     icon: 'dashboard',
     route: '/dashboard',
     title: 'Dashboard'
+  },
+  {
+    icon: 'videogame_asset',
+    route: '/gameserver-management',
+    title: 'Game Server Management'
   },
   {
     icon: 'account_circle',
@@ -41,16 +47,11 @@ export class NavComponent {
       map(result => result.matches),
       map(result => this.isHandset = result)
     );
+  
+  isHandset: boolean;
+  @ViewChild('drawer', { static: false }) drawer: MatSidenav;
 
-    isHandset: boolean;
-    @ViewChild('drawer') drawer: MatSidenav;
-
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    private AuthService: AuthService
-  ) {
-    
-  }
+  isAuthenticated: boolean = this.AuthService.isAuthenticated()
 
   closeDrawerIfPhone() {
     if(this.isHandset) {

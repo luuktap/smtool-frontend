@@ -1,65 +1,21 @@
-import {
-  BrowserModule
-} from '@angular/platform-browser';
-import {
-  NgModule,
-  APP_INITIALIZER
-} from '@angular/core';
-import {
-  LayoutModule
-} from '@angular/cdk/layout';
-import {
-  BrowserAnimationsModule
-} from '@angular/platform-browser/animations';
-import {
-  FormsModule,
-  ReactiveFormsModule
-} from '@angular/forms';
-import {
-  HttpClientModule
-} from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { LayoutModule } from '@angular/cdk/layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
-import {
-  AppRoutingModule
-} from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from './material';
 
-import {
-  AppComponent
-} from './app.component';
-import {
-  NavComponent
-} from './nav/nav.component';
+import { AppComponent } from './app.component';
+import { NavComponent } from './nav/nav.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UsermanagementComponent } from './usermanagement/usermanagement.component';
+import { LoginComponent } from './login/login.component';
+import { GameservermanagementComponent } from './gameservermanagement/gameservermanagement.component';
 
-import {
-  MatToolbarModule,
-  MatButtonModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatListModule,
-  MatGridListModule,
-  MatCardModule,
-  MatMenuModule,
-  MatTableModule,
-  MatPaginatorModule,
-  MatSortModule,
-  MatInputModule,
-  MatSelectModule,
-  MatRadioModule,
-  MatChipsModule
-} from '@angular/material';
-import {
-  DashboardComponent
-} from './dashboard/dashboard.component';
-import {
-  UsermanagementComponent
-} from './usermanagement/usermanagement.component';
-import {
-  LoginComponent
-} from './login/login.component';
-
-import {
-  AuthService
-} from './services/auth.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -67,31 +23,18 @@ import {
     NavComponent,
     DashboardComponent,
     UsermanagementComponent,
-    LoginComponent
+    LoginComponent,
+    GameservermanagementComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatInputModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatChipsModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [{
     provide: APP_INITIALIZER,
