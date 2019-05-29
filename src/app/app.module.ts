@@ -45,7 +45,7 @@ import {
   MatInputModule,
   MatSelectModule,
   MatRadioModule,
-  MatProgressSpinnerModule
+  MatChipsModule
 } from '@angular/material';
 import {
   DashboardComponent
@@ -88,7 +88,7 @@ import {
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    MatProgressSpinnerModule,
+    MatChipsModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule
