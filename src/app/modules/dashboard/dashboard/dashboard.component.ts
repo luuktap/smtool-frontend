@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Gameserver } from '../../../interfaces/gameserver';
 
+import { NotificationService } from '../../../services/notification.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -43,8 +45,9 @@ export class DashboardComponent implements OnInit {
   ];
 
 
-  constructor() { }
-
+  constructor() {
+  }
+  
   ngOnInit() {
   }
 
