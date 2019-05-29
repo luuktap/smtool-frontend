@@ -2,7 +2,8 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscriber, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MatMenu, MatSidenav } from '@angular/material';
+import { MatMenu } from '@angular/material/menu';
+import { MatSidenav } from '@angular/material/sidenav';
 
 import { User } from '../interfaces/user';
 import { Navroute } from '../interfaces/navroute';
