@@ -10,24 +10,22 @@ const routes: Routes = [
 },
 
 {
-  path: '**',
-  redirectTo: 'login'
-}];
-
-/*
-{
   path: 'dashboard',
-  loadChildren: './module',
+  loadChildren: () => import('./modules/dashboard/dashboard.module').then(mod => mod.DashboardModule)
 },
 {
   path: 'gameserver-management',
-  component: GameservermanagementComponent
+  loadChildren: () => import('./modules/gameserver-management/gameserver-management.module').then(mod => mod.GameserverManagementModule)
 },
 {
   path: 'user-management',
-  component: UsermanagementComponent
+  loadChildren: () => import('./modules/user-management/user-management.module').then(mod => mod.UserManagementModule)
 },
-*/
+
+{
+  path: '**',
+  redirectTo: '/dashboard'
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,3 +1,27 @@
-<p>
-  dashboard works!
-</p>
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard</h1>
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Game Server Status
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <mat-list>
+            <mat-list-item *ngFor="let server of GameServers">
+              <h4 mat-line>{{server.name}}</h4>
+              <p mat-line *ngIf="server.online">{{server.playersOnline}} / {{server.playersLimit}} Players</p>
+              <mat-chip-list style="float: left;">
+                <mat-chip *ngIf="server.online" class="server-online">Online</mat-chip>
+                <mat-chip *ngIf="!server.online" class="server-offline">Offline</mat-chip>
+              </mat-chip-list>
+              <mat-divider></mat-divider>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

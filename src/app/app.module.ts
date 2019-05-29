@@ -10,10 +10,7 @@ import { MaterialModule } from './material';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UsermanagementComponent } from './usermanagement/usermanagement.component';
 import { LoginComponent } from './login/login.component';
-import { GameservermanagementComponent } from './gameservermanagement/gameservermanagement.component';
 
 import { AuthService } from './services/auth.service';
 
@@ -21,10 +18,7 @@ import { AuthService } from './services/auth.service';
   declarations: [
     AppComponent,
     NavComponent,
-    DashboardComponent,
-    UsermanagementComponent,
     LoginComponent,
-    GameservermanagementComponent
   ],
   imports: [
     BrowserModule,
