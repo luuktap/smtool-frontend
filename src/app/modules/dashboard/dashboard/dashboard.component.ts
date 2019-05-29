@@ -69,6 +69,11 @@ export class DashboardComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver
   ) {
+    this.GameServers.sort((a, b) => {
+      if(a.name < b.name) return -1;
+      if(a.name > b.name) return 1;
+      return 0;
+    })
   }
 
   isHandset = this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Small]).pipe(
