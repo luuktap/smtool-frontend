@@ -28,11 +28,6 @@ export class NavComponent {
     title: 'Dashboard'
   },
   {
-    icon: 'videogame_asset',
-    route: '/gameserver-management',
-    title: 'Game Server Management'
-  },
-  {
     icon: 'account_circle',
     route: '/user-management',
     title: 'User Management'

@@ -14,10 +14,6 @@ const routes: Routes = [
   loadChildren: () => import('./modules/dashboard/dashboard.module').then(mod => mod.DashboardModule)
 },
 {
-  path: 'gameserver-management',
-  loadChildren: () => import('./modules/gameserver-management/gameserver-management.module').then(mod => mod.GameserverManagementModule)
-},
-{
   path: 'user-management',
   loadChildren: () => import('./modules/user-management/user-management.module').then(mod => mod.UserManagementModule)
 },
