@@ -4,6 +4,9 @@ import { Observable, Subscriber, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MatMenu, MatSidenav } from '@angular/material';
 
+import { User } from '../interfaces/user';
+import { AuthService } from '../services/auth.service';
+
 interface ROUTE {
   icon?: string;
   route?: string;
@@ -42,7 +45,12 @@ export class NavComponent {
     isHandset: boolean;
     @ViewChild('drawer') drawer: MatSidenav;
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private AuthService: AuthService
+  ) {
+    
+  }
 
   closeDrawerIfPhone() {
     if(this.isHandset) {
