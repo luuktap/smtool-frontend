@@ -6,7 +6,7 @@ import { MatMenu } from '@angular/material/menu';
 import { MatSidenav } from '@angular/material/sidenav';
 
 import { User } from '../interfaces/user';
-import { Navroute } from '../interfaces/navroute';
+import { NavRoute } from '../interfaces/nav-route';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class NavComponent {
     private AuthService: AuthService
   ) {}
 
-  routes: Navroute[] = [{
+  routes: NavRoute[] = [{
     icon: 'dashboard',
     route: '/dashboard',
     title: 'Dashboard'

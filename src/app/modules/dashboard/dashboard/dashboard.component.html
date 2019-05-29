@@ -13,7 +13,7 @@
             <mat-list-item *ngFor="let server of GameServers">
               <h4 mat-line>{{server.name}}</h4>
               <p mat-line *ngIf="server.online">{{server.playersOnline}} / {{server.playersLimit}} Players</p>
-              <p mat-line *ngIf="server.online">Uptime: 1hr</p>
+              <p mat-line *ngIf="server.online">Uptime: {{ getUptimeString(server.uptime) }}</p>
 
               <ng-container *ngIf="!(isHandset | async) else phoneControls">
                 <button *ngIf="!server.online" mat-icon-button matTooltip="Start Server">
@@ -69,19 +69,19 @@
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            Service Statuses
+            Service Status
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <mat-list>
-            <mat-list-item *ngFor="let server of GameServers">
-              <h4 mat-line>{{server.name}}</h4>
-              <p mat-line *ngIf="server.online">{{server.playersOnline}} / {{server.playersLimit}} Players</p>
-              <p mat-line *ngIf="server.online">Uptime: 1hr</p>
-              <button *ngIf="!server.online" mat-icon-button matTooltip="Start Server">
+            <mat-list-item *ngFor="let service of Services">
+              <h4 mat-line>{{service.name}}</h4>
+              <p mat-line *ngIf="service.online && service.name == 'Teamspeak 3'">{{service.custom.usersOnline}} / {{service.custom.usersLimit}} Users</p>
+              <p mat-line *ngIf="service.online">Uptime: {{ getUptimeString(service.uptime) }}</p>
+              <button *ngIf="!service.online" mat-icon-button matTooltip="Start Server">
                 <mat-icon>play_arrow</mat-icon>
               </button>
-              <button *ngIf="server.online" mat-icon-button matTooltip="Stop Server">
+              <button *ngIf="service.online" mat-icon-button matTooltip="Stop Server">
                 <mat-icon>stop</mat-icon>
               </button>
               <button mat-icon-button matTooltip="Restart Server">
@@ -91,8 +91,8 @@
                 <mat-icon>get_app</mat-icon>
               </button>
               <mat-chip-list>
-                <mat-chip *ngIf="server.online" class="server-online">Online</mat-chip>
-                <mat-chip *ngIf="!server.online" class="server-offline">Offline</mat-chip>
+                <mat-chip *ngIf="service.online" class="server-online">Online</mat-chip>
+                <mat-chip *ngIf="!service.online" class="server-offline">Offline</mat-chip>
               </mat-chip-list>
               <mat-divider></mat-divider>
             </mat-list-item>
