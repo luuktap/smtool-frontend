@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { NewUserDialog } from './new-user.dialog';
+import { EditUserDialog } from './edit-user.dialog';
 
 export interface testData {
   id: number;
@@ -19,252 +22,14 @@ export class UserManagementComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   displayedColumns: string[] = ['id', 'name', 'actions'];
-  testData: testData[] = [
-    {id: 1, name: 'Hydrogen'},
-    {id: 2, name: 'Helium'},
-    {id: 3, name: 'Lithium'},
-    {id: 4, name: 'Beryllium'},
-    {id: 5, name: 'Boron'},
-    {id: 6, name: 'Carbon'},
-    {id: 7, name: 'Nitrogen'},
-    {id: 8, name: 'Oxygen'},
-    {id: 9, name: 'Fluorine'},
-    {id: 10, name: 'Neon'},
-    {id: 11, name: 'Sodium'},
-    {id: 12, name: 'Magnesium'},
-    {id: 13, name: 'Aluminum'},
-    {id: 14, name: 'Silicon'},
-    {id: 15, name: 'Phosphorus'},
-    {id: 16, name: 'Sulfur'},
-    {id: 17, name: 'Chlorine'},
-    {id: 18, name: 'Argon'},
-    {id: 19, name: 'Potassium'},
-    {id: 20, name: 'Calcium'},
-    {id: 1, name: 'Hydrogen'},
-    {id: 2, name: 'Helium'},
-    {id: 3, name: 'Lithium'},
-    {id: 4, name: 'Beryllium'},
-    {id: 5, name: 'Boron'},
-    {id: 6, name: 'Carbon'},
-    {id: 7, name: 'Nitrogen'},
-    {id: 8, name: 'Oxygen'},
-    {id: 9, name: 'Fluorine'},
-    {id: 10, name: 'Neon'},
-    {id: 11, name: 'Sodium'},
-    {id: 12, name: 'Magnesium'},
-    {id: 13, name: 'Aluminum'},
-    {id: 14, name: 'Silicon'},
-    {id: 15, name: 'Phosphorus'},
-    {id: 16, name: 'Sulfur'},
-    {id: 17, name: 'Chlorine'},
-    {id: 18, name: 'Argon'},
-    {id: 19, name: 'Potassium'},
-    {id: 20, name: 'Calcium'},
-    {id: 1, name: 'Hydrogen'},
-    {id: 2, name: 'Helium'},
-    {id: 3, name: 'Lithium'},
-    {id: 4, name: 'Beryllium'},
-    {id: 5, name: 'Boron'},
-    {id: 6, name: 'Carbon'},
-    {id: 7, name: 'Nitrogen'},
-    {id: 8, name: 'Oxygen'},
-    {id: 9, name: 'Fluorine'},
-    {id: 10, name: 'Neon'},
-    {id: 11, name: 'Sodium'},
-    {id: 12, name: 'Magnesium'},
-    {id: 13, name: 'Aluminum'},
-    {id: 14, name: 'Silicon'},
-    {id: 15, name: 'Phosphorus'},
-    {id: 16, name: 'Sulfur'},
-    {id: 17, name: 'Chlorine'},
-    {id: 18, name: 'Argon'},
-    {id: 19, name: 'Potassium'},
-    {id: 20, name: 'Calcium'},
-    {id: 1, name: 'Hydrogen'},
-    {id: 2, name: 'Helium'},
-    {id: 3, name: 'Lithium'},
-    {id: 4, name: 'Beryllium'},
-    {id: 5, name: 'Boron'},
-    {id: 6, name: 'Carbon'},
-    {id: 7, name: 'Nitrogen'},
-    {id: 8, name: 'Oxygen'},
-    {id: 9, name: 'Fluorine'},
-    {id: 10, name: 'Neon'},
-    {id: 11, name: 'Sodium'},
-    {id: 12, name: 'Magnesium'},
-    {id: 13, name: 'Aluminum'},
-    {id: 14, name: 'Silicon'},
-    {id: 15, name: 'Phosphorus'},
-    {id: 16, name: 'Sulfur'},
-    {id: 17, name: 'Chlorine'},
-    {id: 18, name: 'Argon'},
-    {id: 19, name: 'Potassium'},
-    {id: 20, name: 'Calcium'},
-    {id: 1, name: 'Hydrogen'},
-    {id: 2, name: 'Helium'},
-    {id: 3, name: 'Lithium'},
-    {id: 4, name: 'Beryllium'},
-    {id: 5, name: 'Boron'},
-    {id: 6, name: 'Carbon'},
-    {id: 7, name: 'Nitrogen'},
-    {id: 8, name: 'Oxygen'},
-    {id: 9, name: 'Fluorine'},
-    {id: 10, name: 'Neon'},
-    {id: 11, name: 'Sodium'},
-    {id: 12, name: 'Magnesium'},
-    {id: 13, name: 'Aluminum'},
-    {id: 14, name: 'Silicon'},
-    {id: 15, name: 'Phosphorus'},
-    {id: 16, name: 'Sulfur'},
-    {id: 17, name: 'Chlorine'},
-    {id: 18, name: 'Argon'},
-    {id: 19, name: 'Potassium'},
-    {id: 20, name: 'Calcium'},
-    {id: 1, name: 'Hydrogen'},
-    {id: 2, name: 'Helium'},
-    {id: 3, name: 'Lithium'},
-    {id: 4, name: 'Beryllium'},
-    {id: 5, name: 'Boron'},
-    {id: 6, name: 'Carbon'},
-    {id: 7, name: 'Nitrogen'},
-    {id: 8, name: 'Oxygen'},
-    {id: 9, name: 'Fluorine'},
-    {id: 10, name: 'Neon'},
-    {id: 11, name: 'Sodium'},
-    {id: 12, name: 'Magnesium'},
-    {id: 13, name: 'Aluminum'},
-    {id: 14, name: 'Silicon'},
-    {id: 15, name: 'Phosphorus'},
-    {id: 16, name: 'Sulfur'},
-    {id: 17, name: 'Chlorine'},
-    {id: 18, name: 'Argon'},
-    {id: 19, name: 'Potassium'},
-    {id: 20, name: 'Calcium'},
-    {id: 1, name: 'Hydrogen'},
-    {id: 2, name: 'Helium'},
-    {id: 3, name: 'Lithium'},
-    {id: 4, name: 'Beryllium'},
-    {id: 5, name: 'Boron'},
-    {id: 6, name: 'Carbon'},
-    {id: 7, name: 'Nitrogen'},
-    {id: 8, name: 'Oxygen'},
-    {id: 9, name: 'Fluorine'},
-    {id: 10, name: 'Neon'},
-    {id: 11, name: 'Sodium'},
-    {id: 12, name: 'Magnesium'},
-    {id: 13, name: 'Aluminum'},
-    {id: 14, name: 'Silicon'},
-    {id: 15, name: 'Phosphorus'},
-    {id: 16, name: 'Sulfur'},
-    {id: 17, name: 'Chlorine'},
-    {id: 18, name: 'Argon'},
-    {id: 19, name: 'Potassium'},
-    {id: 20, name: 'Calcium'},
-    {id: 1, name: 'Hydrogen'},
-    {id: 2, name: 'Helium'},
-    {id: 3, name: 'Lithium'},
-    {id: 4, name: 'Beryllium'},
-    {id: 5, name: 'Boron'},
-    {id: 6, name: 'Carbon'},
-    {id: 7, name: 'Nitrogen'},
-    {id: 8, name: 'Oxygen'},
-    {id: 9, name: 'Fluorine'},
-    {id: 10, name: 'Neon'},
-    {id: 11, name: 'Sodium'},
-    {id: 12, name: 'Magnesium'},
-    {id: 13, name: 'Aluminum'},
-    {id: 14, name: 'Silicon'},
-    {id: 15, name: 'Phosphorus'},
-    {id: 16, name: 'Sulfur'},
-    {id: 17, name: 'Chlorine'},
-    {id: 18, name: 'Argon'},
-    {id: 19, name: 'Potassium'},
-    {id: 20, name: 'Calcium'},
-    {id: 1, name: 'Hydrogen'},
-    {id: 2, name: 'Helium'},
-    {id: 3, name: 'Lithium'},
-    {id: 4, name: 'Beryllium'},
-    {id: 5, name: 'Boron'},
-    {id: 6, name: 'Carbon'},
-    {id: 7, name: 'Nitrogen'},
-    {id: 8, name: 'Oxygen'},
-    {id: 9, name: 'Fluorine'},
-    {id: 10, name: 'Neon'},
-    {id: 11, name: 'Sodium'},
-    {id: 12, name: 'Magnesium'},
-    {id: 13, name: 'Aluminum'},
-    {id: 14, name: 'Silicon'},
-    {id: 15, name: 'Phosphorus'},
-    {id: 16, name: 'Sulfur'},
-    {id: 17, name: 'Chlorine'},
-    {id: 18, name: 'Argon'},
-    {id: 19, name: 'Potassium'},
-    {id: 20, name: 'Calcium'},
-    {id: 1, name: 'Hydrogen'},
-    {id: 2, name: 'Helium'},
-    {id: 3, name: 'Lithium'},
-    {id: 4, name: 'Beryllium'},
-    {id: 5, name: 'Boron'},
-    {id: 6, name: 'Carbon'},
-    {id: 7, name: 'Nitrogen'},
-    {id: 8, name: 'Oxygen'},
-    {id: 9, name: 'Fluorine'},
-    {id: 10, name: 'Neon'},
-    {id: 11, name: 'Sodium'},
-    {id: 12, name: 'Magnesium'},
-    {id: 13, name: 'Aluminum'},
-    {id: 14, name: 'Silicon'},
-    {id: 15, name: 'Phosphorus'},
-    {id: 16, name: 'Sulfur'},
-    {id: 17, name: 'Chlorine'},
-    {id: 18, name: 'Argon'},
-    {id: 19, name: 'Potassium'},
-    {id: 20, name: 'Calcium'},
-    {id: 1, name: 'Hydrogen'},
-    {id: 2, name: 'Helium'},
-    {id: 3, name: 'Lithium'},
-    {id: 4, name: 'Beryllium'},
-    {id: 5, name: 'Boron'},
-    {id: 6, name: 'Carbon'},
-    {id: 7, name: 'Nitrogen'},
-    {id: 8, name: 'Oxygen'},
-    {id: 9, name: 'Fluorine'},
-    {id: 10, name: 'Neon'},
-    {id: 11, name: 'Sodium'},
-    {id: 12, name: 'Magnesium'},
-    {id: 13, name: 'Aluminum'},
-    {id: 14, name: 'Silicon'},
-    {id: 15, name: 'Phosphorus'},
-    {id: 16, name: 'Sulfur'},
-    {id: 17, name: 'Chlorine'},
-    {id: 18, name: 'Argon'},
-    {id: 19, name: 'Potassium'},
-    {id: 20, name: 'Calcium'},
-    {id: 1, name: 'Hydrogen'},
-    {id: 2, name: 'Helium'},
-    {id: 3, name: 'Lithium'},
-    {id: 4, name: 'Beryllium'},
-    {id: 5, name: 'Boron'},
-    {id: 6, name: 'Carbon'},
-    {id: 7, name: 'Nitrogen'},
-    {id: 8, name: 'Oxygen'},
-    {id: 9, name: 'Fluorine'},
-    {id: 10, name: 'Neon'},
-    {id: 11, name: 'Sodium'},
-    {id: 12, name: 'Magnesium'},
-    {id: 13, name: 'Aluminum'},
-    {id: 14, name: 'Silicon'},
-    {id: 15, name: 'Phosphorus'},
-    {id: 16, name: 'Sulfur'},
-    {id: 17, name: 'Chlorine'},
-    {id: 18, name: 'Argon'},
-    {id: 19, name: 'Potassium'},
-    {id: 20, name: 'Calcium'}
-  ];
+  testData: testData[] = [];
+
   dataSource: MatTableDataSource<testData>;
   filterText: string = '';
 
-  constructor() {
+  constructor(
+    public dialog: MatDialog
+  ) {
     this.dataSource = new MatTableDataSource(this.testData);
   }
 
@@ -279,6 +44,48 @@ export class UserManagementComponent implements OnInit {
 
   addDataToTable(data: testData) {
     this.testData.push(data);
+    this.dataSource.data = this.testData;
+  }
+
+  newUser() {
+    let newUserDialog = this.dialog.open(NewUserDialog, {
+      width: '250px'
+    });
+
+    newUserDialog.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result) {
+        this.addDataToTable({
+          id: (this.testData.length + 1),
+          name: result.name
+        })
+      }
+    });
+  }
+
+  editUser(id, name) {
+    const editUserDialog = this.dialog.open(EditUserDialog, {
+      width: '250px',
+      data: { id, name }
+    });
+
+    editUserDialog.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result) {
+        let userToEdit = this.testData.find(user => { return user.id == result.id; })
+        userToEdit.name = result.name;
+        this.dataSource.data = this.testData;
+        // this.addDataToTable({
+        //   id: (this.testData.length + 1),
+        //   name: result.name
+        // })
+      }
+    });
+  }
+
+  removeUser(id) {
+    let index = this.testData.map(user => { return user.id; }).indexOf(id);
+    this.testData.splice(index, 1);
     this.dataSource.data = this.testData;
   }
 

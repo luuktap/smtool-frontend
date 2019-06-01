@@ -64,8 +64,6 @@ export class DashboardComponent implements OnInit {
     }
   ]
 
-  uptimeTest: string = null;
-
   constructor(
     private breakpointObserver: BreakpointObserver
   ) {
