@@ -1,6 +1,6 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list [cols]="(isHandset | async) ? 1 : 2" rowHeight="350px">
+  <mat-grid-list [cols]="(isHandset$ | async) ? 1 : 2" rowHeight="350px">
     <mat-grid-tile [colspan]="1" [rowspan]="2">
       <mat-card class="dashboard-card">
         <mat-card-header>
@@ -15,7 +15,7 @@
               <p mat-line *ngIf="server.online">{{server.playersOnline}} / {{server.playersLimit}} Players</p>
               <p mat-line *ngIf="server.online">{{ getUptimeString(server.uptime) }} Uptime</p>
 
-              <ng-container *ngIf="!(isHandset | async) else phoneServerControls">
+              <ng-container *ngIf="!(isHandset$ | async) else phoneServerControls">
                 <button *ngIf="!server.online" mat-icon-button matTooltip="Start Server">
                   <mat-icon>play_arrow</mat-icon>
                 </button>
@@ -80,7 +80,7 @@
                 {{service.custom.usersLimit}} Users</p>
               <p mat-line *ngIf="service.online">{{ getUptimeString(service.uptime) }} Uptime</p>
 
-              <ng-container *ngIf="!(isHandset | async) else phoneServiceControls">
+              <ng-container *ngIf="!(isHandset$ | async) else phoneServiceControls">
                 <button *ngIf="!service.online" mat-icon-button matTooltip="Start Service">
                   <mat-icon>play_arrow</mat-icon>
                 </button>

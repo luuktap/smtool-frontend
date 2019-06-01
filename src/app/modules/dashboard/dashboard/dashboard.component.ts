@@ -74,10 +74,15 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  isHandset = this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Small]).pipe(
+  isHandset: boolean;
+  isHandset$ = this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Small]).pipe(
     map(({ matches }) => {
       if (matches) {
+        this.isHandset = true;
         return true;
+      } else {
+        this.isHandset = false;
+        return false;
       }
     })
   )
@@ -86,11 +91,18 @@ export class DashboardComponent implements OnInit {
   }
 
   getUptimeString(uptime) {
+    if(this.isHandset) {
+      let days = `${uptime.days}${uptime.days == 1 ? 'd' : 'd'}`;
+      let hours = `${uptime.hours}${uptime.hours == 1 ? 'h' : 'h'}`;
+      let minutes = `${uptime.minutes}${uptime.minutes == 1 ? 'm' : 'm'}`;
+      return `${days}, ${hours}, ${minutes}`;
+    }
     let days = `${uptime.days} ${uptime.days == 1 ? 'Day' : 'Days'}`;
     let hours = `${uptime.hours} ${uptime.hours == 1 ? 'Hour' : 'Hours'}`;
     let minutes = `${uptime.minutes} ${uptime.minutes == 1 ? 'Minute' : 'Minutes'}`;
-    // let seconds = `${uptime.seconds} ${uptime.seconds == 1 ? 'Second' : 'Seconds'}`;
     return `${days}, ${hours}, ${minutes}`;
+
+    // let seconds = `${uptime.seconds} ${uptime.seconds == 1 ? 'Second' : 'Seconds'}`;
   }
 
   calculateUptime(upSince: Date) {
