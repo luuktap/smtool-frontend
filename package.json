@@ -1,6 +1,7 @@
 {
   "name": "smtool-frontend",
   "version": "0.0.0",
+  "author": "Luuk Tap",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
