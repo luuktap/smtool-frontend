@@ -9,8 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material';
 
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-import { LoginComponent } from './login/login.component';
+import { NavComponent } from './components/nav/nav.component';
 
 import { AuthService } from './services/auth.service';
 
@@ -18,7 +17,6 @@ import { AuthService } from './services/auth.service';
   declarations: [
     AppComponent,
     NavComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,
