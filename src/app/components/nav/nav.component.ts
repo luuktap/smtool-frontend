@@ -34,7 +34,7 @@ export class NavComponent {
   },
   {
     icon: 'account_circle',
-    route: '/login',
+    route: '/auth/login',
     title: 'Login'
   }];
 
