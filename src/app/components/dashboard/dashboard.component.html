@@ -53,9 +53,9 @@
                 </ng-template>
               </ng-container>
               <mat-chip-list>
-                <mat-chip class="server-offline" *ngIf="server.status == 0">Offline</mat-chip>
-                <mat-chip class="server-online" *ngIf="server.status == 1">Online</mat-chip>
-                <mat-chip class="server-restarting" *ngIf="server.status == 2">Restarting</mat-chip>
+                <mat-chip mat-line class="server-offline" *ngIf="server.status == 0">Offline</mat-chip>
+                <mat-chip mat-line class="server-online" *ngIf="server.status == 1">Online</mat-chip>
+                <mat-chip mat-line class="server-restarting" *ngIf="server.status == 2">Action In Progress</mat-chip>
               </mat-chip-list>
               <mat-divider></mat-divider>
             </mat-list-item>
@@ -118,9 +118,9 @@
                 </ng-template>
               </ng-container>
               <mat-chip-list>
-                <mat-chip class="server-offline" *ngIf="service.status == 0">Offline</mat-chip>
-                <mat-chip class="server-online" *ngIf="service.status == 1">Online</mat-chip>
-                <mat-chip class="server-restarting" *ngIf="service.status == 2">Restarting</mat-chip>
+                <mat-chip mat-line class="server-offline" *ngIf="service.status == 0">Offline</mat-chip>
+                <mat-chip mat-line class="server-online" *ngIf="service.status == 1">Online</mat-chip>
+                <mat-chip mat-line class="server-restarting" *ngIf="service.status == 2">Action In Progress</mat-chip>
               </mat-chip-list>
               <mat-divider></mat-divider>
             </mat-list-item>
