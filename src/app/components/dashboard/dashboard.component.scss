@@ -16,10 +16,14 @@
   right: 10px;
 }
 
+.server-offline {
+  background-color: red;
+}
+
 .server-online {
   background-color: green;
 }
 
-.server-offline {
-  background-color: red;
+.server-restarting {
+  background-color: blue;
 }

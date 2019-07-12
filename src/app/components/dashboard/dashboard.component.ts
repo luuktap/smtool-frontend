@@ -17,35 +17,35 @@ export class DashboardComponent implements OnInit {
   GameServers: GameserverStatus[] = [
     {
       name: 'Arma 3 Sandbox',
-      online: false,
+      status: 0,
       playersOnline: 1,
       playersLimit: 5,
       uptime: this.calculateUptime(new Date("2019-05-28 12:00:00"))
     },
     {
       name: 'Arma 3 Wasteland',
-      online: false,
+      status: 0,
       playersOnline: 1,
       playersLimit: 5,
       uptime: this.calculateUptime(new Date("2019-05-28 12:00:00"))
     },
     {
       name: 'Minecraft',
-      online: true,
+      status: 1,
       playersOnline: 0,
       playersLimit: 20,
       uptime: this.calculateUptime(new Date("2019-05-28 12:00:00"))
     },
     {
       name: 'Rust',
-      online: true,
+      status: 2,
       playersOnline: 0,
       playersLimit: 16,
       uptime: this.calculateUptime(new Date("2019-05-28 12:00:00"))
     },
     {
       name: 'Factorio',
-      online: true,
+      status: 1,
       playersOnline: 1,
       playersLimit: 5,
       uptime: this.calculateUptime(new Date("2019-05-28 12:00:00"))
@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit {
   Services: ServiceStatus[] = [
     {
       name: 'Teamspeak 3',
-      online: true,
+      status: 1,
       uptime: this.calculateUptime(new Date("2019-05-28 12:00:00")),
       custom: {
         usersOnline: 3,

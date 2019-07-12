@@ -11,51 +11,51 @@
           <mat-list>
             <mat-list-item *ngFor="let server of GameServers">
               <h4 mat-line>{{server.name}}</h4>
-              <p mat-line *ngIf="server.online">{{server.playersOnline}} / {{server.playersLimit}} Players</p>
-              <p mat-line *ngIf="server.online">{{ getUptimeString(server.uptime) }} Uptime</p>
-
-              <ng-container *ngIf="!(isHandset$ | async) else phoneServerControls">
-                <button *ngIf="!server.online" mat-icon-button matTooltip="Start Server">
-                  <mat-icon>play_arrow</mat-icon>
-                </button>
-                <button *ngIf="server.online" mat-icon-button matTooltip="Stop Server">
-                  <mat-icon>stop</mat-icon>
-                </button>
-                <button mat-icon-button matTooltip="Restart Server">
-                  <mat-icon>autorenew</mat-icon>
-                </button>
-                <button mat-icon-button matTooltip="Update Server" style="margin-right: 10px;">
-                  <mat-icon>get_app</mat-icon>
-                </button>
-              </ng-container>
-
-              <ng-template #phoneServerControls>
-                <button mat-icon-button [matMenuTriggerFor]="phoneControlsMenu" aria-label="Toggle menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #phoneControlsMenu="matMenu" xPosition="before">
-                  <button *ngIf="!server.online" mat-menu-item>
+              <p mat-line *ngIf="server.status == 1">{{server.playersOnline}} / {{server.playersLimit}} Players</p>
+              <p mat-line *ngIf="server.status == 1">{{ getUptimeString(server.uptime) }} Uptime</p>
+              <ng-container *ngIf="server.status != 2">
+                <ng-container *ngIf="!(isHandset$ | async) else phoneServerControls">
+                  <button *ngIf="server.status == 0" mat-icon-button matTooltip="Start Server">
                     <mat-icon>play_arrow</mat-icon>
-                    <span>Start Server</span>
                   </button>
-                  <button *ngIf="server.online" mat-menu-item>
+                  <button *ngIf="server.status == 1" mat-icon-button matTooltip="Stop Server">
                     <mat-icon>stop</mat-icon>
-                    <span>Stop Server</span>
                   </button>
-                  <button mat-menu-item>
+                  <button mat-icon-button matTooltip="Restart Server">
                     <mat-icon>autorenew</mat-icon>
-                    <span>Restart Server</span>
                   </button>
-                  <button mat-menu-item style="margin-right: 10px;">
+                  <button mat-icon-button matTooltip="Update Server" style="margin-right: 10px;">
                     <mat-icon>get_app</mat-icon>
-                    <span>Update Server</span>
                   </button>
-                </mat-menu>
-              </ng-template>
-
+                </ng-container>
+                <ng-template #phoneServerControls>
+                  <button mat-icon-button [matMenuTriggerFor]="phoneControlsMenu" aria-label="Toggle menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #phoneControlsMenu="matMenu" xPosition="before">
+                    <button *ngIf="server.status == 0" mat-menu-item>
+                      <mat-icon>play_arrow</mat-icon>
+                      <span>Start Server</span>
+                    </button>
+                    <button *ngIf="server.status == 1" mat-menu-item>
+                      <mat-icon>stop</mat-icon>
+                      <span>Stop Server</span>
+                    </button>
+                    <button mat-menu-item>
+                      <mat-icon>autorenew</mat-icon>
+                      <span>Restart Server</span>
+                    </button>
+                    <button mat-menu-item style="margin-right: 10px;">
+                      <mat-icon>get_app</mat-icon>
+                      <span>Update Server</span>
+                    </button>
+                  </mat-menu>
+                </ng-template>
+              </ng-container>
               <mat-chip-list>
-                <mat-chip *ngIf="server.online" class="server-online">Online</mat-chip>
-                <mat-chip *ngIf="!server.online" class="server-offline">Offline</mat-chip>
+                <mat-chip class="server-offline" *ngIf="server.status == 0">Offline</mat-chip>
+                <mat-chip class="server-online" *ngIf="server.status == 1">Online</mat-chip>
+                <mat-chip class="server-restarting" *ngIf="server.status == 2">Restarting</mat-chip>
               </mat-chip-list>
               <mat-divider></mat-divider>
             </mat-list-item>
@@ -75,52 +75,52 @@
           <mat-list>
             <mat-list-item *ngFor="let service of Services">
               <h4 mat-line>{{service.name}}</h4>
-              <p mat-line *ngIf="service.online && service.name == 'Teamspeak 3'">{{service.custom.usersOnline}} /
+              <p mat-line *ngIf="service.status == 1 && service.name == 'Teamspeak 3'">{{service.custom.usersOnline}} /
                 {{service.custom.usersLimit}} Users</p>
-              <p mat-line *ngIf="service.online">{{ getUptimeString(service.uptime) }} Uptime</p>
-
-              <ng-container *ngIf="!(isHandset$ | async) else phoneServiceControls">
-                <button *ngIf="!service.online" mat-icon-button matTooltip="Start Service">
-                  <mat-icon>play_arrow</mat-icon>
-                </button>
-                <button *ngIf="service.online" mat-icon-button matTooltip="Stop Service">
-                  <mat-icon>stop</mat-icon>
-                </button>
-                <button mat-icon-button matTooltip="Restart Service">
-                  <mat-icon>autorenew</mat-icon>
-                </button>
-                <button mat-icon-button matTooltip="Update Service" style="margin-right: 10px;">
-                  <mat-icon>get_app</mat-icon>
-                </button>
-              </ng-container>
-
-              <ng-template #phoneServiceControls>
-                <button mat-icon-button [matMenuTriggerFor]="phoneControlsMenu" aria-label="Toggle menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #phoneControlsMenu="matMenu" xPosition="before">
-                  <button *ngIf="!service.online" mat-menu-item>
+              <p mat-line *ngIf="service.status == 1">{{ getUptimeString(service.uptime) }} Uptime</p>
+              <ng-container *ngIf="service.status != 2">
+                <ng-container *ngIf="!(isHandset$ | async) else phoneServiceControls">
+                  <button *ngIf="service.status == 0" mat-icon-button matTooltip="Start Service">
                     <mat-icon>play_arrow</mat-icon>
-                    <span>Start Service</span>
                   </button>
-                  <button *ngIf="service.online" mat-menu-item>
+                  <button *ngIf="service.status == 1" mat-icon-button matTooltip="Stop Service">
                     <mat-icon>stop</mat-icon>
-                    <span>Stop Service</span>
                   </button>
-                  <button mat-menu-item>
+                  <button mat-icon-button matTooltip="Restart Service">
                     <mat-icon>autorenew</mat-icon>
-                    <span>Restart Service</span>
                   </button>
-                  <button mat-menu-item style="margin-right: 10px;">
+                  <button mat-icon-button matTooltip="Update Service" style="margin-right: 10px;">
                     <mat-icon>get_app</mat-icon>
-                    <span>Update Service</span>
                   </button>
-                </mat-menu>
-              </ng-template>
-
+                </ng-container>
+                <ng-template #phoneServiceControls>
+                  <button mat-icon-button [matMenuTriggerFor]="phoneControlsMenu" aria-label="Toggle menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #phoneControlsMenu="matMenu" xPosition="before">
+                    <button *ngIf="service.status == 0" mat-menu-item>
+                      <mat-icon>play_arrow</mat-icon>
+                      <span>Start Service</span>
+                    </button>
+                    <button *ngIf="service.status == 1" mat-menu-item>
+                      <mat-icon>stop</mat-icon>
+                      <span>Stop Service</span>
+                    </button>
+                    <button mat-menu-item>
+                      <mat-icon>autorenew</mat-icon>
+                      <span>Restart Service</span>
+                    </button>
+                    <button mat-menu-item style="margin-right: 10px;">
+                      <mat-icon>get_app</mat-icon>
+                      <span>Update Service</span>
+                    </button>
+                  </mat-menu>
+                </ng-template>
+              </ng-container>
               <mat-chip-list>
-                <mat-chip *ngIf="service.online" class="server-online">Online</mat-chip>
-                <mat-chip *ngIf="!service.online" class="server-offline">Offline</mat-chip>
+                <mat-chip class="server-offline" *ngIf="service.status == 0">Offline</mat-chip>
+                <mat-chip class="server-online" *ngIf="service.status == 1">Online</mat-chip>
+                <mat-chip class="server-restarting" *ngIf="service.status == 2">Restarting</mat-chip>
               </mat-chip-list>
               <mat-divider></mat-divider>
             </mat-list-item>
