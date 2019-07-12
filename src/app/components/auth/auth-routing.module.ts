@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthLoginComponent } from './auth-login/auth-login.component';
-import { MaterialModule } from 'src/app/material';
 
 const routes: Routes = [
   {
@@ -21,11 +20,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    MaterialModule,
-    RouterModule.forChild(routes)
-  ],
-  exports: [RouterModule],
-  declarations: [AuthLoginComponent]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class AuthRoutingModule { }
