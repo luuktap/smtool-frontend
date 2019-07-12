@@ -27,6 +27,7 @@ export class AuthService {
 
   requestUser() {
     return new Promise((resolve, reject) => {
+      return resolve(true);
       this.http
         .get(`${env.backendURL}/user/authenticated`, {
           // observe: 'body',
