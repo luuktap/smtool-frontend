@@ -19,26 +19,28 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 
+const MaterialModules = [
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatGridListModule,
+  MatCardModule,
+  MatMenuModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatInputModule,
+  MatSelectModule,
+  MatRadioModule,
+  MatChipsModule,
+  MatTooltipModule,
+  MatSnackBarModule,
+  MatDialogModule,
+];
+
 @NgModule({
-  exports: [
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatInputModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatChipsModule,
-    MatTooltipModule,
-    MatSnackBarModule,
-    MatDialogModule,
-  ]
+  exports: MaterialModules
 })
 export class MaterialModule {}
