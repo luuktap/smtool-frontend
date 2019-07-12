@@ -19,7 +19,7 @@ export class NavComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private AuthService: AuthService
+    public AuthService: AuthService
   ) {}
 
   routes: NavRoute[] = [{
@@ -46,8 +46,6 @@ export class NavComponent {
   
   isHandset: boolean;
   @ViewChild('drawer', { static: false }) drawer: MatSidenav;
-
-  isAuthenticated: boolean = this.AuthService.isAuthenticated()
 
   closeDrawerIfPhone() {
     if(this.isHandset) {
