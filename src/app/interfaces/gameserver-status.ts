@@ -1,6 +1,6 @@
 export interface GameserverStatus {
     name: string,
-    online: boolean,
+    status: number,
     playersOnline: number,
     playersLimit: number,
     uptime: {

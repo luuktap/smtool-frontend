@@ -1,6 +1,6 @@
 export interface ServiceStatus {
     name: string,
-    online: boolean,
+    status: number,
     uptime: {
         days: number,
         hours: number,
