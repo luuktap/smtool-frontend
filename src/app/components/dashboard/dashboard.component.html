@@ -15,16 +15,16 @@
               <p mat-line *ngIf="server.status == 1">{{ getUptimeString(server.uptime) }} Uptime</p>
               <ng-container *ngIf="server.status != 2">
                 <ng-container *ngIf="!(isHandset$ | async) else phoneServerControls">
-                  <button *ngIf="server.status == 0" mat-icon-button matTooltip="Start Server">
+                  <button *ngIf="server.status == 0" mat-icon-button matTooltip="Start Server" (click)="startGameServer(server)">
                     <mat-icon>play_arrow</mat-icon>
                   </button>
-                  <button *ngIf="server.status == 1" mat-icon-button matTooltip="Stop Server">
+                  <button *ngIf="server.status == 1" mat-icon-button matTooltip="Stop Server" (click)="stopGameServer(server)">
                     <mat-icon>stop</mat-icon>
                   </button>
-                  <button mat-icon-button matTooltip="Restart Server">
+                  <button mat-icon-button matTooltip="Restart Server" (click)="restartGameServer(server)">
                     <mat-icon>autorenew</mat-icon>
                   </button>
-                  <button mat-icon-button matTooltip="Update Server" style="margin-right: 10px;">
+                  <button mat-icon-button matTooltip="Update Server" style="margin-right: 10px;" (click)="updateGameServer(server)">
                     <mat-icon>get_app</mat-icon>
                   </button>
                 </ng-container>
@@ -33,19 +33,19 @@
                     <mat-icon>more_vert</mat-icon>
                   </button>
                   <mat-menu #phoneControlsMenu="matMenu" xPosition="before">
-                    <button *ngIf="server.status == 0" mat-menu-item>
+                    <button *ngIf="server.status == 0" mat-menu-item (click)="startGameServer(server)">
                       <mat-icon>play_arrow</mat-icon>
                       <span>Start Server</span>
                     </button>
-                    <button *ngIf="server.status == 1" mat-menu-item>
+                    <button *ngIf="server.status == 1" mat-menu-item (click)="stopGameServer(server)">
                       <mat-icon>stop</mat-icon>
                       <span>Stop Server</span>
                     </button>
-                    <button mat-menu-item>
+                    <button mat-menu-item (click)="restartGameServer(server)">
                       <mat-icon>autorenew</mat-icon>
                       <span>Restart Server</span>
                     </button>
-                    <button mat-menu-item style="margin-right: 10px;">
+                    <button mat-menu-item style="margin-right: 10px;" (click)="updateGameServer(server)">
                       <mat-icon>get_app</mat-icon>
                       <span>Update Server</span>
                     </button>
@@ -55,7 +55,7 @@
               <mat-chip-list>
                 <mat-chip mat-line class="server-offline" *ngIf="server.status == 0">Offline</mat-chip>
                 <mat-chip mat-line class="server-online" *ngIf="server.status == 1">Online</mat-chip>
-                <mat-chip mat-line class="server-restarting" *ngIf="server.status == 2">Action In Progress</mat-chip>
+                <mat-chip mat-line class="server-restarting" *ngIf="server.status == 2">Task In Progress</mat-chip>
               </mat-chip-list>
               <mat-divider></mat-divider>
             </mat-list-item>
@@ -80,16 +80,16 @@
               <p mat-line *ngIf="service.status == 1">{{ getUptimeString(service.uptime) }} Uptime</p>
               <ng-container *ngIf="service.status != 2">
                 <ng-container *ngIf="!(isHandset$ | async) else phoneServiceControls">
-                  <button *ngIf="service.status == 0" mat-icon-button matTooltip="Start Service">
+                  <button *ngIf="service.status == 0" mat-icon-button matTooltip="Start Service" (click)="startService(service)">
                     <mat-icon>play_arrow</mat-icon>
                   </button>
-                  <button *ngIf="service.status == 1" mat-icon-button matTooltip="Stop Service">
+                  <button *ngIf="service.status == 1" mat-icon-button matTooltip="Stop Service" (click)="stopService(service)">
                     <mat-icon>stop</mat-icon>
                   </button>
-                  <button mat-icon-button matTooltip="Restart Service">
+                  <button mat-icon-button matTooltip="Restart Service" (click)="restartService(service)">
                     <mat-icon>autorenew</mat-icon>
                   </button>
-                  <button mat-icon-button matTooltip="Update Service" style="margin-right: 10px;">
+                  <button mat-icon-button matTooltip="Update Service" style="margin-right: 10px;" (click)="updateService(service)">
                     <mat-icon>get_app</mat-icon>
                   </button>
                 </ng-container>
@@ -98,19 +98,19 @@
                     <mat-icon>more_vert</mat-icon>
                   </button>
                   <mat-menu #phoneControlsMenu="matMenu" xPosition="before">
-                    <button *ngIf="service.status == 0" mat-menu-item>
+                    <button *ngIf="service.status == 0" mat-menu-item (click)="startService(service)">
                       <mat-icon>play_arrow</mat-icon>
                       <span>Start Service</span>
                     </button>
-                    <button *ngIf="service.status == 1" mat-menu-item>
+                    <button *ngIf="service.status == 1" mat-menu-item (click)="stopService(service)">
                       <mat-icon>stop</mat-icon>
                       <span>Stop Service</span>
                     </button>
-                    <button mat-menu-item>
+                    <button mat-menu-item (click)="restartService(service)">
                       <mat-icon>autorenew</mat-icon>
                       <span>Restart Service</span>
                     </button>
-                    <button mat-menu-item style="margin-right: 10px;">
+                    <button mat-menu-item style="margin-right: 10px;" (click)="updateService(service)">
                       <mat-icon>get_app</mat-icon>
                       <span>Update Service</span>
                     </button>
