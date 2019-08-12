@@ -10,7 +10,7 @@ export class NotificationService {
     private _snackBar: MatSnackBar
   ) { }
 
-  openSnackBar(message: string, action: string, config?: MatSnackBarConfig<any>) {
+  openSnackBar(message: string, action?: string, config?: MatSnackBarConfig<any>) {
     this._snackBar.open(message, action, config);
   }
 }
