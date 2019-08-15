@@ -122,73 +122,73 @@ export class DashboardComponent implements OnInit {
   }
 
   startGameServer(server: GameServer) {
-    this.notificationService.openSnackBar(`Starting ${server.name}...`, `Ok`)
+    this.notificationService.openSnackBar(`Starting ${server.name}...`, `OK`)
     server.status = 2;
     setTimeout(() => {
-      this.notificationService.openSnackBar(`Task completed!`, `Ok`);
+      this.notificationService.openSnackBar(`Task completed!`, `OK`);
       server.status = 1;
     }, 5000);
   }
 
   stopGameServer(server: GameServer) {
-    this.notificationService.openSnackBar(`Stopping ${server.name}...`, `Ok`)
+    this.notificationService.openSnackBar(`Stopping ${server.name}...`, `OK`)
     server.status = 2;
     setTimeout(() => {
-      this.notificationService.openSnackBar(`Task completed!`, `Ok`);
+      this.notificationService.openSnackBar(`Task completed!`, `OK`);
       server.status = 0;
     }, 5000);
   }
 
   restartGameServer(server: GameServer) {
-    this.notificationService.openSnackBar(`Restarting ${server.name}...`, `Ok`)
+    this.notificationService.openSnackBar(`Restarting ${server.name}...`, `OK`)
     server.status = 2;
     setTimeout(() => {
-      this.notificationService.openSnackBar(`Task completed!`, `Ok`);
+      this.notificationService.openSnackBar(`Task completed!`, `OK`);
       server.status = 1;
     }, 5000);
   }
 
   updateGameServer(server: GameServer) {
-    this.notificationService.openSnackBar(`Updating ${server.name}...`, `Ok`)
+    this.notificationService.openSnackBar(`Updating ${server.name}...`, `OK`)
     server.status = 2;
     setTimeout(() => {
-      this.notificationService.openSnackBar(`Task completed!`, `Ok`);
+      this.notificationService.openSnackBar(`Task completed!`, `OK`);
       server.status = 1;
     }, 5000);
   }
 
   startService(service: Service) {
-    this.notificationService.openSnackBar(`Starting ${service.name}...`, `Ok`)
+    this.notificationService.openSnackBar(`Starting ${service.name}...`, `OK`)
     service.status = 2;
     setTimeout(() => {
-      this.notificationService.openSnackBar(`Task completed!`, `Ok`);
+      this.notificationService.openSnackBar(`Task completed!`, `OK`);
       service.status = 1;
     }, 5000);
   }
 
   stopService(service: Service) {
-    this.notificationService.openSnackBar(`Stopping ${service.name}...`, `Ok`)
+    this.notificationService.openSnackBar(`Stopping ${service.name}...`, `OK`)
     service.status = 2;
     setTimeout(() => {
-      this.notificationService.openSnackBar(`Task completed!`, `Ok`);
+      this.notificationService.openSnackBar(`Task completed!`, `OK`);
       service.status = 0;
     }, 5000);
   }
 
   restartService(service: Service) {
-    this.notificationService.openSnackBar(`Restarting ${service.name}...`, `Ok`)
+    this.notificationService.openSnackBar(`Restarting ${service.name}...`, `OK`)
     service.status = 2;
     setTimeout(() => {
-      this.notificationService.openSnackBar(`Task completed!`, `Ok`);
+      this.notificationService.openSnackBar(`Task completed!`, `OK`);
       service.status = 1;
     }, 5000);
   }
 
   updateService(service: Service) {
-    this.notificationService.openSnackBar(`Updating ${service.name}...`, `Ok`)
+    this.notificationService.openSnackBar(`Updating ${service.name}...`, `OK`)
     service.status = 2;
     setTimeout(() => {
-      this.notificationService.openSnackBar(`Task completed!`, `Ok`);
+      this.notificationService.openSnackBar(`Task completed!`, `OK`);
       service.status = 1;
     }, 5000);
   }
